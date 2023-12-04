@@ -1,6 +1,6 @@
 
 
-简体中文(Simple Chinese)|<a herf="./README-en.md">English</a>
+[简体中文(Simplified Chinese)](./README.md)|[English](./README-en.md)
 
 # go_tun2socks_for_windows
 
