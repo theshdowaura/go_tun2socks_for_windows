@@ -1,0 +1,11 @@
+device: wintun
+proxy: socks5://host:port
+ip: 192.168.123.1
+mask: 255.255.255.0
+gateway: none
+server_ip: <server ip>
+networks:
+    - name: Network1
+      address: 192.168.1.0/24
+    - name: Network2
+      address: 10.0.0.0/8
