@@ -1,4 +1,4 @@
-[TOC]
+
 
 简体中文(Simple Chinese)|<a herf="./README-en.md">English</a>
 
