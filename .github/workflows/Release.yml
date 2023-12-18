@@ -24,8 +24,8 @@ jobs:
         run: |
           go mod init main
           go mod tidy
-          GOOS=windows GOARCH=amd64 go build -o gotun2socks_windows_amd64.exe 
-          GOOS=windows GOARCH=386 go build -o gotun2socks_windows_386.exe
+          GOARCH=amd64 go build -o gotun2socks_windows_amd64.exe 
+          GOARCH=386 go build -o gotun2socks_windows_386.exe
      
 
       - name: Create Release
