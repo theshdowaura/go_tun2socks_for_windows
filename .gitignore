@@ -1,1 +1,7 @@
 .idea/*
+rules.db
+core/*
+rules/*
+config/*
+gui/MainWindows.go
+gui/ui.go
