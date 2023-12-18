@@ -1,6 +1,5 @@
 .idea/*
 rules.db
-core/*
 rules/*
 config/*
 gui/MainWindows.go
