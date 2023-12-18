@@ -2,12 +2,11 @@ package database
 
 import (
 	"database/sql"
-	"fmt"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
 )
 
-func DbOut(game string) {
+func DbOut(game string) []string {
 	// 打开数据库连接
 	db, err := sql.Open("sqlite3", "database/rules.db")
 	if err != nil {
@@ -23,13 +22,14 @@ func DbOut(game string) {
 	defer rows.Close()
 
 	// 导出数据
+	var ips []string
 	for rows.Next() {
 		var ip string
 		err := rows.Scan(&ip)
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(ip)
+		ips = append(ips, ip)
 	}
 
 	// 检查是否有错误
@@ -37,4 +37,6 @@ func DbOut(game string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	return ips
 }
