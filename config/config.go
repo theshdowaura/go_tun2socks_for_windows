@@ -1,40 +1,66 @@
 package config
 
-import (
-	"gopkg.in/yaml.v3"
-	"io/ioutil"
-)
-
-// Config 结构定义了配置文件的结构
 type Config struct {
-	// 配置项
-	Device   string        `yaml:"device"`
-	Proxy    string        `yaml:"proxy"`
-	IP       string        `yaml:"ip"`
-	Mask     string        `yaml:"mask"`
-	Gateway  string        `yaml:"gateway"`
-	ServerIP string        `yaml:"server_ip"`
-	Networks []NetworkInfo `yaml:"networks"`
-}
-type NetworkInfo struct {
-	Name    string `yaml:"name"`
-	Address string `yaml:"address"`
+	Log       LogConfig   `json:"log"`
+	DNS       DNSConfig   `json:"dns"`
+	Inbounds  []Inbound   `json:"inbounds"`
+	Outbounds []Outbound  `json:"outbounds"`
+	Route     RouteConfig `json:"route"`
 }
 
-// LoadConfig 函数从指定的 YAML 文件中加载配置
-func LoadConfig(filename string) (*Config, error) {
-	// 读取文件内容
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
+type LogConfig struct {
+	Level     string `json:"level"`
+	Timestamp bool   `json:"timestamp"`
+}
 
-	// 解析 YAML 数据
-	cfg := &Config{}
-	err = yaml.Unmarshal(data, cfg)
-	if err != nil {
-		return nil, err
-	}
+type DNSConfig struct {
+	Servers       []DNServer `json:"servers"`
+	Rules         []DNSRule  `json:"rules"`
+	DisableCache  bool       `json:"disable_cache"`
+	DisableExpire bool       `json:"disable_expire"`
+}
 
-	return cfg, nil
+type DNServer struct {
+	Tag     string `json:"tag"`
+	Address string `json:"address"`
+	Detour  string `json:"detour,omitempty"`
+}
+
+type DNSRule struct {
+	Domain  string `json:"domain"`
+	Geosite string `json:"geosite"`
+	Server  string `json:"server"`
+}
+
+type Inbound struct {
+	Type              string   `json:"type"`
+	Tag               string   `json:"tag"`
+	Listen            string   `json:"listen"`
+	ListenPort        int      `json:"listen_port"`
+	Sniff             bool     `json:"sniff"`
+	SetSystemProxy    bool     `json:"set_system_proxy"`
+	InterfaceName     string   `json:"interface_name,omitempty"`
+	Inet4Address      string   `json:"inet4_address,omitempty"`
+	AutoRoute         bool     `json:"auto_route,omitempty"`
+	Inet4RouteAddress []string `json:"inet4_route_address,omitempty"`
+}
+
+type Outbound struct {
+	Type           string `json:"type"`
+	Tag            string `json:"tag"`
+	Server         string `json:"server,omitempty"`
+	ServerPort     int    `json:"server_port,omitempty"`
+	ConnectTimeout string `json:"connect_timeout,omitempty"`
+	TCPFastOpen    bool   `json:"tcp_fast_open,omitempty"`
+	UDPFragment    bool   `json:"udp_fragment,omitempty"`
+}
+
+type RouteConfig struct {
+	Rules []RouteRule `json:"rules"`
+}
+
+type RouteRule struct {
+	Geosite  string `json:"geosite"`
+	GeoIP    string `json:"geoip,omitempty"`
+	Outbound string `json:"outbound"`
 }
