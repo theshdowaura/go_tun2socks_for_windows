@@ -24,8 +24,7 @@ jobs:
         run: |
           go mod init main
           go mod tidy
-          GOARCH=amd64 go build -o gotun2socks_windows_amd64.exe 
-          GOARCH=386 go build -o gotun2socks_windows_386.exe
+          go build -o gotun2socks_windows_amd64.exe 
      
 
       - name: Create Release
@@ -48,12 +47,3 @@ jobs:
           asset_name: gotun2socks_windows_amd64.exe
           asset_content_type: application/octet-stream
 
-      - name: Upload Windows Binaries (386)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GOTUN2SOCKS_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./gotun2socks_windows_386.exe
-          asset_name: gotun2socks_windows_386.exe
-          asset_content_type: application/octet-stream
