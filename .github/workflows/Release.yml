@@ -22,7 +22,6 @@ jobs:
           go-version: 1.17
       - name: Build for Windows
         run: |
-          go mod init go_tun2socks_for_windows
           go mod tidy
           GOOS=windows GOARCH=amd64 go build -o gotun2sockswindows_amd64.exe 
           GOOS=windows GOARCH=386 go build -o gotun2socks_windows_386.exe
