@@ -1,4 +1,4 @@
-module go_tun2socks_for_windows
+module main
 
 go 1.20
 

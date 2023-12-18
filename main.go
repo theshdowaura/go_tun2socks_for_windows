@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go_tun2socks_for_windows/gui"
+	"main/gui"
 )
 
 func main() {
