@@ -23,11 +23,11 @@ go_tun2socks基于tun2socks与sing-box开发的一款双内核游戏加速器的
 
 ## 项目文档
 
-[go_tun2socks_for_windows项目文档]("https://github.com/theshdowaura/go_tun2socks_for_windows/wiki")
+[go_tun2socks_for_windows项目文档](https://github.com/theshdowaura/go_tun2socks_for_windows/wiki)
 
 
 ### 加入我们的群组:
-[Telegram群组]("https://t.me/gotun2socks/1")
+[Telegram群组](https://t.me/gotun2socks/1)
 ## 感谢名单
 
 感谢github给了一个良好的开源平台社区环境
