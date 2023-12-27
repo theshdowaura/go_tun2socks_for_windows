@@ -27,33 +27,21 @@
   },
   "inbounds": [
     {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "::",
-      "listen_port": 20080,
-      "sniff": true,
-      "set_system_proxy": false
-    },
-    {
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "sing-box-socks",
       "inet4_address": "172.19.0.1/30",
       "auto_route": true,
-      "inet4_route_address": [
-        ""]
+      "inet4_route_address": ["0.0.0.0/1"]
     }
-],
+  ],
   "outbounds": [
     {
       "type": "socks",
       "tag": "socks-out",
       "server": "10.21.238.179",
       "server_port": 1082,
-
-      "connect_timeout": "5s",
-      "tcp_fast_open": true,
-      "udp_fragment": true
+      "version": "5"
     },
     {
       "type": "direct",
