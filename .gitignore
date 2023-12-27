@@ -8,3 +8,4 @@ geoip.db
 geosite.db
 test
 Icon.png
+RulesToSrs.go
