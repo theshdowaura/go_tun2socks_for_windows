@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-release:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -22,9 +22,9 @@ jobs:
           go-version: 1.20.2
       - name: Build for Windows
         run: |
+          go mod init main
           go mod tidy
-          GOOS=windows GOARCH=amd64 go build -o gotun2sockswindows_amd64.exe 
-          GOOS=windows GOARCH=386 go build -o gotun2socks_windows_386.exe
+          go build -o gotun2socks_windows_amd64.exe 
      
 
       - name: Create Release
@@ -47,12 +47,3 @@ jobs:
           asset_name: gotun2socks_windows_amd64.exe
           asset_content_type: application/octet-stream
 
-      - name: Upload Windows Binaries (386)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GOTUN2SOCKS_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./gotun2socks_windows_386.exe
-          asset_name: gotun2socks_windows_386.exe
-          asset_content_type: application/octet-stream
