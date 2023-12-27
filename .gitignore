@@ -1,6 +1,10 @@
 .idea/*
 rules.db
 rules/*
-config/*
+config/*.json
 gui/MainWindows.go
 gui/ui.go
+geoip.db
+geosite.db
+test
+Icon.png
