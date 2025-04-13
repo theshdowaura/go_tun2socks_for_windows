@@ -1,5 +1,9 @@
 [简体中文(Simplified Chinese)](./README.md)|[English](./README-en.md)|[日本語(Japanese)](./README-jp.md)
 
+# 本项目归档，无意继续开发
+
+协议再好不如买专线🤣
+
 # go_tun2socks_for_windows
 
 ## 简介
